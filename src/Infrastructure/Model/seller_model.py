@@ -9,7 +9,7 @@ class Seller(db.Model):
     cellphone = db.Column(db.String(15), nullable=False)
     password = db.Column(db.String(100), nullable=False)
     deleted_at = db.Column(db.DateTime, nullable=True)
-    status = db.Column(db.String(20), default="Inativo")
+    status = db.Column(db.String(20), default="Ativo")
 
     def to_dict(self):
         return {

@@ -75,33 +75,3 @@ class SellerController:
         return make_response(jsonify({
             "message": message,
         }), 200)
-    
-    @staticmethod
-    def activate_seller(cellphone, code):
-        seller, error_message = SellerService.activate_seller(cellphone, code)
-        
-        if error_message:
-            return make_response(jsonify({"message": error_message}), 400)
-        
-        if not seller:
-            return make_response(jsonify({"message": "Seller not found"}), 404)
-        
-        return make_response(jsonify({
-            "message": "Seller activated successfully",
-            "seller": seller.to_dict()
-        }), 200)
-    
-    @staticmethod
-    def activate_seller(cellphone, code):
-        seller, error_message = SellerService.activate_seller(cellphone, code)
-        
-        if error_message:
-            return make_response(jsonify({"message": error_message}), 400)
-        
-        if not seller:
-            return make_response(jsonify({"message": "Seller not found"}), 404)
-        
-        return make_response(jsonify({
-            "message": "Seller activated successfully",
-            "seller": seller.to_dict()
-        }), 200)

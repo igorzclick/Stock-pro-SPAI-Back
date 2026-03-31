@@ -38,14 +38,3 @@ def init_routes(app):
     @jwt_required(refresh=True)
     def refresh():
         return jsonify(access_token=create_access_token(identity=str(get_jwt_identity())))
-
-    @app.route("/seller/activate", methods=["POST"])
-    def activate_seller():
-        data = request.get_json()
-        cellphone = data.get("cellphone")
-        code = data.get("code")
-
-        if not cellphone or not code:
-            return make_response(jsonify({"message": "cellphone and code are required"}), 400)
-
-        return SellerController.activate_seller(cellphone, code)
